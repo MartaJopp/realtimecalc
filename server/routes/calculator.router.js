@@ -27,7 +27,6 @@ module.exports = function (io) { // catch here
                 res.sendStatus(200)
                 //Emit the event
                 io.emit("chat", req.body)
-                // getLastRecords();
             }
         }); // END SAVE
     }); // END POST Route

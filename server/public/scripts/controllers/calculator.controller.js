@@ -16,6 +16,7 @@ myApp.controller('CalculatorController', function ($http, $scope, socket, Calcul
         CalculatorService.total(equalSign)
     }
 
+    //gets last 10 records
     vm.getProblems = function () {
         CalculatorService.getProblems();
     }

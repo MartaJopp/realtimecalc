@@ -1,17 +1,38 @@
 <div class="container">
     <H3>Real Time Calculator Application</H3>
-    <div layout="row" id="display">
-<h3>{{cc.screen.show}}</h3>
-        </div>
-    <button ng-value = "1" ng-click="cc.updateScreen(1)">1</button>
-    <button ng-value = "2">2</button>
-    <button ng-value = "3">3</button>
-        <button value="+" ng-click='cc.updateScreen("+")'>+</button>
-        <button value="=" ng-click='cc.total("=")'>=</button>
+    <div layout="row" id="display" layout-align="center center">
+        <h3 id="alignRight">{{cc.screen.show}}</h3>
+    </div>
+    <div layout="row" class="calcRows">
+        <button flex="75" ng-value="clear" ng-click="cc.clear()">clear</button>
+        <button flex="25" value="/" ng-click='cc.updateScreen("/")'>/</button>
+    </div>
+    <div layout="row" class="calcRows">
+        <button flex="25" ng-value="7" ng-click="cc.updateScreen(7)">7</button>
+        <button flex="25" ng-value="8" ng-click="cc.updateScreen(8)">8</button>
+        <button flex="25" ng-value="9" ng-click="cc.updateScreen(9)">9</button>
+        <button flex="25" value="*" ng-click='cc.updateScreen("*")'>*</button>
+    </div>
+    <div layout="row" class="calcRows">
+        <button flex="25" ng-value="4" ng-click="cc.updateScreen(4)">4</button>
+        <button flex="25" ng-value="5" ng-click="cc.updateScreen(5)">5</button>
+        <button flex="25" ng-value="6" ng-click="cc.updateScreen(6)">6</button>
+        <button flex="25" value="-" ng-click='cc.updateScreen("-")'>-</button>
+    </div>
+    <div layout="row" class="calcRows">
+        <button flex="25" ng-value="1" ng-click="cc.updateScreen(1)">1</button>
+        <button flex="25" ng-value="2" ng-click="cc.updateScreen(2)">2</button>
+        <button flex="25" ng-value="3" ng-click="cc.updateScreen(3)">3</button>
+        <button flex="25" value="+" ng-click='cc.updateScreen("+")'>+</button>
+    </div>
+        <div layout="row" class="calcRows">
 
-<div class="displayProblems">
-    <ul ng-repeat = "equation in cc.equations.data">
-        <li>{{equation.problem}}</li>
-    </ul>
+        <button flex="75" ng-value="0" ng-click="cc.updateScreen(0)">0</button>
+    <button flex="25" value="=" ng-click='cc.total("=")'>=</button>
 </div>
+    <div class="displayProblems">
+        <ul ng-repeat="equation in cc.equations.data">
+            <li>{{equation.problem}}</li>
+        </ul>
+    </div>
 </div>

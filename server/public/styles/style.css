@@ -1,5 +1,17 @@
 #display {
     background-color:orange;
     width: 300px;
-    height: 100px;
+    height: 75px;
+    margin-left: 200px;
+    
+}
+
+.calcRows {
+    width: 300px;
+    height: 50px;
+    margin-left: 200px;
+}
+
+#alignRight {
+    float: right
 }
