@@ -12,4 +12,4 @@ To Dos:
 - [ ] Post
 - [ ] Get
 - [ ] Style
-- [ ] Update ReadMe
+- [ ] Complete ReadMe
