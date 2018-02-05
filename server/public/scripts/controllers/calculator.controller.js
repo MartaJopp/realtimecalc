@@ -2,30 +2,25 @@ myApp.controller('CalculatorController', function ($http, $scope, socket, Calcul
     var vm = this;
     vm.calculatorService = CalculatorService;
 
-//start display with 0
-vm.screen = "";
+    vm.screen = CalculatorService.screen;
+    vm.equations = CalculatorService.equations;
 
-vm.equation = {
-    problem: '',
-    
-}
+    //updates the screen by adding onto the string
+    vm.updateScreen = function (value) {
+        CalculatorService.updateScreen(value);
+        // vm.screen += value;
+    }
 
-//updates the screen by adding onto the string
-vm.updateScreen = function (value) {
-    vm.screen += value;
-}
+    //calls the total function from the service
+    vm.total = function (equalSign) {
+        CalculatorService.total(equalSign)
+    }
 
-vm.total = function (value) {
-    // vm.equation.problem = vm.screen;
-    // console.log(value)
-    vm.screen += value + eval(vm.screen);
-    vm.equation = vm.screen;
-    console.log(vm.equation);
+    vm.getProblems = function () {
+        CalculatorService.getProblems();
+    }
+//call getProblems to get last 10 upon entering site
+vm.getProblems()
 
-}
-
-
-
-    
 
 })//end controller

@@ -1,23 +1,22 @@
-var express = require('express');
-var mongoose = require('mongoose');
-var app = express();
+var express = require("express")
+var mongoose = require("mongoose")
+var app = express()
 var server = require('http').createServer(app);
-//port 5000
-var port = process.env.PORT || 5000;
-//require bodyParser
-var bodyParser = require('body-parser');
-var http = require('http').Server(app);
-var io = require('socket.io').listen(server);
-//make calculator router available
-var calculatorRouter = require('./routes/calculator.router.js') 
+var port = 5000;
+var bodyParser = require('body-parser'); // require body-parser
+var http = require("http").Server(app)
+var io = require("socket.io").listen(server)
+var calculatorRouter = require('./routes/calculator.router.js')(io); // accesses router
+
 
 app.use(bodyParser.json());
 //schema is received instead of empty object
 app.use(bodyParser.urlencoded({ extended: false }))
 //static files
 app.use(express.static('server/public'));
-//use calculator router for /calculator path
+
 app.use('/calculator', calculatorRouter);
+
 
 // Mongo Connection //
 var mongoURI = '';
@@ -28,7 +27,7 @@ if (process.env.MONGODB_URI != undefined) {
     mongoURI = process.env.MONGODB_URI;
 } else {
     // use the local database server
-    mongoURI = 'mongodb://localhost:27017/realtimecalc';
+    mongoURI = 'mongodb://localhost:27017/calctime';
 }
 
 mongoose.connect(mongoURI, {
@@ -51,8 +50,7 @@ io.on("connection", (socket) => {
     console.log("Socket is connected...")
 })
 
-//spin up server 
+//spin up server - need to change to server/http once get socket.io going
 server.listen(port, function () {
     console.log('Listening on port', port)
 })
-
