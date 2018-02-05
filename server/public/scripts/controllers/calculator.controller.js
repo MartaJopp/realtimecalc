@@ -16,12 +16,16 @@ myApp.controller('CalculatorController', function ($http, $scope, socket, Calcul
         CalculatorService.total(equalSign)
     }
 
-    //gets last 10 records
+    //gets last 10 equations
     vm.getProblems = function () {
         CalculatorService.getProblems();
     }
-//call getProblems to get last 10 upon entering site
-vm.getProblems()
+    //call getProblems to get last 10 upon entering site
+    vm.getProblems()
 
+    //clear the calculator
+    vm.clear = function () {
+        CalculatorService.clear();
+    }
 
 })//end controller

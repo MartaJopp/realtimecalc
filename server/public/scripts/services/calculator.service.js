@@ -16,11 +16,8 @@ myApp.service('CalculatorService', function ($http, $location, socket) {
     }
 
     var socket = io()
-    // socket.on("chat", self.data)
-
     //listens for the pro
-    socket.on('chat', function (data) {
-        console.log('data getting back', data)
+    socket.on('pro', function (data) {
         self.getProblems()
     })
     //updates the screen by adding onto the string
@@ -30,27 +27,35 @@ myApp.service('CalculatorService', function ($http, $location, socket) {
 
     //equation and answer + POST route to database
     self.total = function (equalSign) {
-        self.screen.show += equalSign + eval(self.screen.show);
-        self.equation.problem = self.screen.show;
+        //saves the current equation
+        var problem = self.screen.show
+        //evaluates the equation
+        self.screen.show = eval(self.screen.show)
+        //problem and solution made into an object
+        self.equation.problem = problem + equalSign + self.screen.show
         console.log(self.equation);
         console.log('here')
-        $http.post('/calculator/', self.equation, function (response) {
+        $http.post('/calculator/', self.equation).then(function (response) {
+            console.log('Success');
+        }).catch(function (err) {
+            console.log('Error Posting Total');
         })
+    } //end total function
+
+
+    //get the last 10 calculations
+    self.getProblems = function () {
+        $http.get('/calculator/').then(function (response) {
+            self.equations.data = response.data;
+        }).catch(function (err) {
+            console.log('Error getting records');
+        })
+    } // end getProblems
+
+    self.clear = function () {
+        self.screen.show = '';
     }
 
-        
-
-        self.getProblems = function () {
-            $http.get('/calculator/').then(function (response) {
-                console.log('Here it is', response);
-                self.equations.data = response.data;
-                // console.log(self.tests)
-            }).catch(function (err) {
-                console.log('You did not GET any riddles');
-            })
-        } // end refreshRentals
-
-    
 
 
 })//end CalculatorService

@@ -6,10 +6,10 @@ To Dos:
 
 - [x] Basic File Structure Setup 
 - [x] Server Up and Running
-- [ ] Mongo
-- [ ] Socket.Io
-- [ ] Calculator Functions
-- [ ] Post
-- [ ] Get
-- [ ] Style
+- [x] Mongo
+- [x] Socket.Io
+- [x] Calculator Functions
+- [x] Post
+- [x] Get
+- [x] Basic Style
 - [ ] Complete ReadMe

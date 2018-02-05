@@ -1,9 +1,14 @@
+body {
+    background-color: white;
+}
 #display {
-    background-color:orange;
+    background-color: #7F7E7A;
     width: 300px;
     height: 75px;
     margin-left: 200px;
-    
+    color: white;
+    border-radius: 5px;  
+    padding-right: 20px;
 }
 
 .calcRows {
@@ -12,6 +17,25 @@
     margin-left: 200px;
 }
 
-#alignRight {
-    float: right
+h2{
+    margin-left: 155px;
 }
+
+.displayProblems {
+    margin-left: 200px;
+}
+
+.operator {
+    background-color: #BFBCB8;
+    font-style: strong;
+    border-color:  #FAFAFA;
+    border-radius: 5px;
+
+}
+
+.number {
+    border-color: #BFBCB8;
+    background-color: #FAFAFA;
+    border-radius: 5px;
+}
+

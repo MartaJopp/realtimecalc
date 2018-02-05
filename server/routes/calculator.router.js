@@ -1,4 +1,4 @@
-module.exports = function (io) { // catch here
+module.exports = function (io) { 
 
     var express = require('express');
     var router = express.Router();
@@ -13,7 +13,7 @@ module.exports = function (io) { // catch here
 
     var Calcs = mongoose.model('Calcs', CalcSchema, 'calcs');
 
-
+//post the calculation to the database
     router.post('/', function (req, res) {
         // console.log('what is io', io)
         console.log('what was sent', req.body);
@@ -26,13 +26,14 @@ module.exports = function (io) { // catch here
             } else {
                 res.sendStatus(200)
                 //Emit the event
-                io.emit("chat", req.body)
+                io.emit("pro", req.body)
             }
         }); // END SAVE
     }); // END POST Route
 
+    //get the last 10 records
     router.get('/', function (req, res) {
-        Calcs.find({}).sort({ _id: -1 }).limit(3).exec(function (err, calcs) { //finding chats
+        Calcs.find({}).sort({ _id: -1 }).limit(10).exec(function (err, calcs) { //finding chats
             if (err) {
                 console.log("ERROR!", err);
                 res.sendStatus(500);
