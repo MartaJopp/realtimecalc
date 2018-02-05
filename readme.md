@@ -4,8 +4,8 @@
 
 To Dos:
 
-- [ ] Basic File Structure Setup 
-- [ ] Server Up and Running
+- [x] Basic File Structure Setup 
+- [x] Server Up and Running
 - [ ] Mongo
 - [ ] Socket.Io
 - [ ] Calculator Functions
