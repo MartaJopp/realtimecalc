@@ -45,5 +45,9 @@ module.exports = function (io) {
         }); // END FIND
     }); // END GET Route
 
+    router.get('/', function (req, res) {
+        res.sendFile(__dirname + '/public/index.html');
+    });
+
     return router;
 }

@@ -17,9 +17,7 @@ app.use(express.static('server/public'));
 
 app.use('/calculator', calculatorRouter);
 
-app.get('/', function (req, res) {
-    res.sendFile(__dirname + '/public/index.html');
-});
+
 
 // Mongo Connection //
 var mongoURI = '';
