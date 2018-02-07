@@ -20,8 +20,7 @@ app.use('/calculator', calculatorRouter);
 
 // Mongo Connection //
 var mongoURI = '';
-// process.env.MONGODB_URI will only be defined if you
-// are running on Heroku
+// process.env.MONGODB_URI only defined running on Heroku
 if (process.env.MONGODB_URI != undefined) {
     // use the string value of the environment variable
     mongoURI = process.env.MONGODB_URI;
@@ -45,6 +44,7 @@ mongoose.connection.on('open', function () {
     console.log("Connected to Mongo!");
 });
 
+module.exports = mongoose;
 
 io.on("connection", (socket) => {
     console.log("Socket is connected...")
