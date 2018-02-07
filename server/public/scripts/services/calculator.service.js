@@ -16,7 +16,8 @@ myApp.service('CalculatorService', function ($http, $location, socket) {
     }
 
     var socket = io()
-    //listens for the pro
+
+    //listens for the pro to receive the full time update
     socket.on('pro', function (data) {
         self.getProblems()
     })
@@ -50,11 +51,12 @@ myApp.service('CalculatorService', function ($http, $location, socket) {
         }).catch(function (err) {
             console.log('Error getting records');
         })
-    } // end getProblems
+    } // end getProblems function
 
+    //clears the calculator screen
     self.clear = function () {
         self.screen.show = '';
-    }
+    } //end clear function
 
 
 
